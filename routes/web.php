@@ -38,3 +38,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('adminMap')->middl
 
 Route::get('/getKmlFile', [MapController::class, 'getMap']);
 
+Route::get('/petugasmap/laporan', function () {
+    return view('GISView/petugas/laporan');
+});
+

@@ -1,3 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#EventSidebar.left-0 {
+    transform: translateX(0);
+}
+
+#EventSidebar.-left-96 {
+    transform: translateX(-100%);
+}
+
+#divForm {
+    margin-top: 30px;
+}
+
+/* Untuk Transition Form */
+.transitionsFrom {
+    margin-right: -435px;
+}
+#formContent {
+    margin-top: 85px;
+}
+#overflowForm {
+    scrollbar-width: thin;
+    scrollbar-color: #4a4a4a transparent;
+}
+#overflowForm::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+#overflowForm::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 6px;
+    border: 2px solid #fff;
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.clicked {
+    background-color: red; /* Ganti warna latar belakang sesuai kebutuhan */
+}
