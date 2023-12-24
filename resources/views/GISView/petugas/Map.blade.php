@@ -85,11 +85,12 @@
         @include('sweetalert::alert')
         
         <div class="p-6 fixed z-50 w-full top-0 flex justify-between items-center text-center drop-shadow-lg bg-white border-b-2 border-slate-500">
-            <button id="toggleSidebar" class="flex flex-col gap-1 px-2 py-2 bg-white rounded-md">
-                <span class="h-[4px] w-6 bg-black transition-all duration-500"></span>
-                <span class="h-[4px] w-6 bg-black transition-all duration-500"></span>
-                <span class="h-[4px] w-6 bg-black transition-all duration-500"></span>
-            </button>
+            <button id="toggleSidebar" class="flex flex-col gap-1 p-2 bg-white rounded-md">
+                <span id="bar1" class="h-[4px] w-6 bg-black transition-transform duration-300 transform origin-center"></span>
+                <span id="bar2" class="h-[4px] w-6 bg-black transition-transform duration-300 transform origin-center"></span>
+                <span id="bar3" class="h-[4px] w-6 bg-black transition-transform duration-300 transform origin-center"></span>
+              </button>
+              
             <h1 class="font-bold text-2xl text-slate-700">
                 <span class="text-blue-600">GRM PLT </span><span id="pumped">PUMPED STORAGE</span>
             </h1>
@@ -125,11 +126,11 @@
             </div>
         </div>
         
-        <button id="toggleSidebar" class="flex flex-col gap-1 px-2 py-2 bg-white rounded-md">
-            <span class="h-[4px] w-6 bg-black transition-all duration-500"></span>
-            <span class="h-[4px] w-6 bg-black transition-all duration-500"></span>
-            <span class="h-[4px] w-6 bg-black transition-all duration-500"></span>
-        </button>
+        {{-- <button id="toggleSidebar" class="flex flex-col gap-1 p-2 bg-white rounded-md">
+            <span id="bar1" class="h-[4px] w-6 bg-black transition-all duration-500"></span>
+            <span id="bar2" class="h-[4px] w-6 bg-black transition-all duration-500"></span>
+            <span id="bar3" class="h-[4px] w-6 bg-black transition-all duration-500"></span>
+        </button> --}}
         
         <aside id="EventSidebar" class="fixed inset-y-0 h-screen bg-white shadow-lg z-20 flex flex-col items-center px-4 -left-96 transition-transform duration-300">
             <div class="w-full mt-24">
@@ -239,7 +240,9 @@
                         </div>
                         <canvas id="signature_ttd" class="px-2 py-1 border  focus:outline-none focus:ring-1 focus:ring-blue-400 rounded-md shadow-md w-full"></canvas>  
                     </div>
-                    <button type="submit" class="px-2 py-1 text-white bg-cyan-800 rounded w-full" data-action="save_image_ttd">SUBMIT</button>
+                    <div class="pb-2">
+                        <button type="submit" class="px-2 py-1 text-white bg-cyan-800 rounded w-full" data-action="save_image_ttd">SUBMIT</button>
+                    </div>
                 </div>
             
             </form>
@@ -253,8 +256,8 @@
     
         <div id="divForm" class="flex justify-center relative">   
             <div class="flex relative drop-shadow-xl z-10 w-full justify-center">
-                <button class="absolute z-20 top-6 left-5 px-3 py-2 bg-white text-slate-900 rounded text-center drop-shadow-xl font-semibold focus:outline-none " onclick="getCurentPosition()">Get Postion</button>
-                <div id="map" class="rounded drop-shadow-lg h-screen w-full z-10">
+                <button class="absolute z-20 left-5 -mt-10 py-1 px-3  sm:mt-12 bg-white text-slate-900 rounded text-center drop-shadow-xl font-semibold focus:outline-none " onclick="getCurentPosition()">Get Postion</button>
+                <div id="map" class="rounded drop-shadow-lg h-screen w-full z-10 -mt-12 sm:mt-9">
                 </div>
                 <div class="coordinate absolute z-20 bottom-6 left-5 px-3  py-2 rounded bg-white drop-shadow-lg text-slate-900 text-base font-medium"></div>     
             </div>  
@@ -450,7 +453,16 @@
 
         toggleSidebar.addEventListener('click', () => {
             eventSidebar.classList.toggle('-left-96');
+           
+            document.getElementById('bar1').classList.toggle('-rotate-45');
+            document.getElementById('bar1').classList.toggle('translate-y-2');
+            document.getElementById('bar2').classList.toggle('opacity-0');
+            document.getElementById('bar3').classList.toggle('rotate-45');
+            document.getElementById('bar3').classList.toggle('-translate-y-2');
         });
+
+    
+            
 
         // Untuk Responsive navbar
         function removeHiddenClass() {
